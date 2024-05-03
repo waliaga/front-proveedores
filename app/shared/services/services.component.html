@@ -1,0 +1,89 @@
+<!-- Service Start -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="title text-center mb-5">
+          <h3 class="font-weight-normal text-dark">Registro de <span class="text-warning">Proveedores</span></h3>
+          <p class="text-muted">El registro de los proveedores para el tribunal supremo electoral, nos ayuda a tener
+          los precios de referencia de los materiales actualizados para una futura elección tomando en cuenta
+          la posible fecha de elección y su ámbito.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="!codeSended">
+      <div class="col-lg-12 col-md-12">
+        <div class="service-box service-success">
+          <div class="mb-5">
+            <i class="pe-7s-mail service-icon"></i>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h5 class="service-title text-dark font-weight-normal pt-1 mb-4">Uso de su correo electrónico</h5>
+              <p class="text-muted service-subtitle mb-4">Para el registro de los proveedores requerimos que usted
+                nos deje su correo electrónico que será nuestra manera de darle un acceso único a su empresa para
+                el registro y modificación de sus propuestas.</p>
+            </div>
+            <div class="col-md-6">
+              <form class="form-horizontal" (submit)="validateEmailOnBackend()">
+                <div class="form-group row mb-4">
+                  <label for="email" class="col-md-4 col-form-label text-dark font-weight-medium service-subtitle">Correo electrónico
+                    <span class="red">*</span>
+                  </label>
+                  <div class="col-md-8">
+                    <input type="email" id="email" (input)="checkEmailValid()" [(ngModel)]="email" name="email" class="form-control border border-light" autocomplete="off" autofocus>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8"></div>
+                  <div class="col-md-4 text-end">
+                    <button *ngIf="!loading" type="submit" class="btn btn-light btn-sm shadow shadow-sm" [disabled]="!validEmail">
+                      <i class="mdi mdi-check-all"></i> Verificar correo
+                    </button>
+                    <div *ngIf="loading" class="spinner-border text-primary m-1" role="status"></div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="codeSended">
+      <div class="col-lg-12 col-md-12">
+        <div class="service-box service-warning">
+          <div class="mb-5">
+            <i class="pe-7s-check service-icon"></i>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h5 class="service-title text-dark font-weight-normal pt-1 mb-4">Verificación de código de seguridad</h5>
+              <p class="text-muted service-subtitle mb-4">Para llevar a cabo el registro de proveedores debe confirmar
+                el código que le enviamos a su correo, esto nos permitirá saber que usted es el propietario de los datos
+                previamente registrados o por registrar.</p>
+            </div>
+            <div class="col-md-6">
+              <form class="form-horizontal" (submit)="validateEmailAndCode()">
+                <div class="form-group row mb-4 text-center">
+                  <ng-otp-input tabindex="1" [config]="config" (onInputChange)="setValue($event)"></ng-otp-input>
+                </div>
+                <div class="row">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-8 text-end">
+                    <button class="btn btn-light btn-sm shadow shadow-sm" (click)="goBackAndSendAgain()">
+                      <i class="mdi mdi-arrow-left"></i> Reenviar el código
+                    </button> &nbsp;
+                    <button *ngIf="!loading" type="submit" class="btn btn-dark btn-sm shadow shadow-sm" [disabled]="code == null">
+                      <i class="mdi mdi-check-all"></i> Verificar código
+                    </button>
+                    <div *ngIf="loading" class="spinner-border text-primary m-1" role="status"></div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="card bg-success text-white border border-dark">
+        <div class="card-header">
+            <h5 class="text-center text-uppercase">Materiales</h5>
+        </div>
+        <div class="card-body bg-white">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row mb-3"></div>
+                    <p *ngIf="sendedProposalConfirm">
+                        <span class="text-warning">¡Propuesta enviada correctamente!</span>
+                    </p>
+                    <button *ngIf="!endProposal && !sendedProposalConfirm" class="btn btn-sm btn-warning" (click)="endMyProposal()">
+                        <i class="mdi mdi-check-all"></i> Finalizar propuesta
+                    </button>
+                    <div *ngIf="endProposal" class="spinner-border text-primary m-1" role="status"></div>
+                    <button *ngIf="sendedProposalConfirm" class="btn btn-sm btn-secondary" (click)="updateCheckProposalButton()">
+                        <i class="mdi mdi-lock-reset"></i> Reenviar propuesta
+                    </button>
+                    <div class="row mb-3"></div>
+                    <div *ngIf="!data" class="spinner-border text-primary m-1" role="status"></div>
+                    <div class="table-responsive" *ngIf="data">
+                        <table class="table table-sm table-striped table-borderless" style="font-size: 12px;">
+                            <thead>
+                                <tr class="bg-success text-white text-uppercase">
+                                    <th>Material</th>
+                                    <th>Caracteristicas</th>
+                                    <th>Tipo material</th>
+                                    <th class="bg-warning text-white">Mi propuesta</th>
+                                    <th>
+                                        <i class="mdi mdi-view-list"></i>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let d of data; let i=index;">
+                                    <td>{{d?.materiales?.item}}</td>
+                                    <td>{{d?.materialelectoral?.descripcion}}</td>
+                                    <td>{{d?.tipomaterial?.label}}</td>
+                                    <td>
+                                        <span *ngIf="d?.materiales?.presupuestomaterial?.costo_unitario"><strong>{{d?.materiales?.presupuestomaterial?.costo_unitario}} ($BOB)</strong></span>
+                                        <span *ngIf="!d?.materiales?.presupuestomaterial?.costo_unitario">Sin propuesta</span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-success" title="Detalles" (click)="openDetailWithData(data[i])">
+                                            <i class="mdi mdi-open-in-new"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #materialdetalle role="document" let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title mt-0">Detalle del material</h5>
+        <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <app-ver-materiales-detalle
+            [data]="dataSend"
+            [email]="email"
+            [codigo]="code"
+            (end)="justClose($event)"
+        ></app-ver-materiales-detalle>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-sm btn-danger" (click)="modal.close('Close click')">
+            <i class="mdi mdi-close"></i> Cancelar
+        </button>
+    </div>
+</ng-template>

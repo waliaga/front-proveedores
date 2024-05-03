@@ -1,0 +1,133 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="table-responsive">
+            <table class="table table-sm table-borderless">
+                <tbody>
+                    <tr>
+                        <th class="bg-warning text-white text-uppercase text-end">Material</th>
+                        <td class="text-start text-uppercase">{{data?.materiales?.item}}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-warning text-white text-uppercase text-end">Material electoral</th>
+                        <td class="text-start text-uppercase">{{data?.materialelectoral?.descripcion}}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-warning text-white text-uppercase text-end">Tipo de material</th>
+                        <td class="text-start text-uppercase">{{data?.tipomaterial?.label}}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-warning text-white text-uppercase text-end">Utilidad de material</th>
+                        <td class="text-start text-uppercase">{{data?.utilidad_material}}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-warning text-white text-uppercase text-end">Cantidad margen de seguridad</th>
+                        <td class="text-start text-uppercase">{{data?.cantidad_margen_seguridad}}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-warning text-white text-uppercase text-end">Cantidad total</th>
+                        <td class="text-start text-uppercase">{{data?.cantidad_total}}</td>
+                    </tr>
+                    <tr *ngIf="data?.caracteristicastecnicas?.caracteristicas">
+                        <th class="bg-warning text-white text-uppercase text-end">Características técnicas</th>
+                        <td class="text-start text-uppercase">{{data?.caracteristicastecnicas?.caracteristicas}}</td>
+                    </tr>
+                    <tr *ngIf="data?.caracteristicastecnicas?.caracteristicas">
+                        <th class="bg-warning text-white text-uppercase text-end">Valor</th>
+                        <td class="text-start text-uppercase">{{data?.caracteristicastecnicas?.valor}}</td>
+                    </tr>
+                    <tr *ngIf="data?.caracteristicastecnicas?.caracteristicas">
+                        <th class="bg-warning text-white text-uppercase text-end">Unidad</th>
+                        <td class="text-start text-uppercase">{{data?.caracteristicastecnicas?.unidad}}</td>
+                    </tr>
+                    <tr *ngIf="data?.caracteristicastecnicas?.caracteristicas">
+                        <th class="bg-warning text-white text-uppercase text-end">Cantidad proyectada</th>
+                        <td class="text-start text-uppercase">{{data?.caracteristicastecnicas?.cantidad_proyectada}}</td>
+                    </tr>
+                    <tr *ngIf="data?.caracteristicastecnicascompuestas?.caracteristicas">
+                        <th class="bg-warning text-white text-uppercase text-end">Características técnicas</th>
+                        <td class="text-start text-uppercase">{{data?.caracteristicastecnicascompuestas?.caracteristicas}}</td>
+                    </tr>
+                    <tr *ngIf="data?.caracteristicastecnicascompuestas?.caracteristicas">
+                        <th class="bg-warning text-white text-uppercase text-end">Valor</th>
+                        <td class="text-start text-uppercase">{{data?.caracteristicastecnicascompuestas?.valor}}</td>
+                    </tr>
+                    <tr *ngIf="data?.caracteristicastecnicascompuestas?.caracteristicas">
+                        <th class="bg-warning text-white text-uppercase text-end">Unidad</th>
+                        <td class="text-start text-uppercase">{{data?.caracteristicastecnicascompuestas?.unidad}}</td>
+                    </tr>
+                    <tr *ngIf="data?.caracteristicastecnicascompuestas?.caracteristicas">
+                        <th class="bg-warning text-white text-uppercase text-end">Papeletas</th>
+                        <td class="text-start text-uppercase">{{data?.caracteristicastecnicascompuestas?.papeletas?.descripcion_region}}</td>
+                    </tr>
+                    <tr *ngIf="data?.caracteristicastecnicascompuestas?.caracteristicas">
+                        <th class="bg-warning text-white text-uppercase text-end">Cerchas</th>
+                        <td class="text-start text-uppercase">{{data?.caracteristicastecnicascompuestas?.cerchas?.descripcion_region}}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-warning text-white text-uppercase text-end">¿Material sensible?</th>
+                        <td class="text-start text-uppercase">{{data?.material_sensible}}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-warning text-white text-uppercase text-end">¿Material fungible?</th>
+                        <td class="text-start text-uppercase">{{data?.material_fungible}}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-warning text-white text-uppercase text-end">¿Material reutilizable?</th>
+                        <td class="text-start text-uppercase">{{data?.material_reutilizable}}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-warning text-white text-uppercase text-end">Lugar de recepción</th>
+                        <td class="text-start text-uppercase">{{data?.lugarrecepcion?.label}}</td>
+                    </tr>
+                    <tr>
+                        <th class="bg-warning text-white text-uppercase text-end">Tiempo de producción / adquisición</th>
+                        <td class="text-start text-uppercase">{{data?.tiempo_produccion_adquisicion}} (días)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h3 class="card-title">Mi propuesta</h3>
+            </div>
+            <div class="card-body">
+                <form class="form-control">
+                    <div class="">
+                        <ngb-alert *ngIf="globalSuccess" [dismissible]="false" type="success">{{successMessage}}</ngb-alert>
+                        <ngb-alert *ngIf="globalError" [dismissible]="false" type="danger">{{errorMessage}}</ngb-alert>
+                        <ngb-alert *ngIf="globalWarning" [dismissible]="false" type="danger">{{warningMessage}}</ngb-alert>
+                    </div>
+                    <p class="card-title-desc">A continuación llene la siguiente información.
+                        <span class="text-muted">Los datos con <span class="text-danger font-weight-medium">*</span> son obligatorios</span>
+                    </p>
+                    <div class="form-group row mb-4">
+                        <label for="costo_unitario" class="col-md-12 col-form-label text-start">Precio unitario referencial
+                            <span class="red">*</span>
+                        </label>
+                        <div class="col-md-12">
+                            <input id="costo_unitario" autocomplete="off" autofocus type="number" [(ngModel)]="datos.costo_unitario.value" name="costo_unitario"
+                               class="form-control" placeholder="Precio unitario referencial"
+                               [ngClass]="{'is-invalid': submitted && datos.costo_unitario.error, 'is-valid': submitted && !datos.costo_unitario.error}">
+                            <small><strong>en Bolivianos ($BOB)</strong></small>
+                            <div *ngIf="submitted && datos.costo_unitario.error" class="invalid-feedback">
+                                <div>Debe llenar esta información</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3"></div>
+                    <button *ngIf="!loading" class="btn btn-sm btn-success btn-rounded shadow shadow-sm" (click)="onSubmit()">
+                        <i class="mdi mdi-check-all"></i> Enviar mi propuesta
+                    </button>
+                    <div *ngIf="loading" class="spinner-border text-primary m-1" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<pre>-->
+<!--    {{data|json}}-->
+<!--</pre>-->

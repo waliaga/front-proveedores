@@ -1,0 +1,65 @@
+<section class="section" id="datos-proveedor">
+    <div class="container">
+        <div class="card bg-warning text-white border border-dark">
+            <div class="card-header">
+                <h5 class="text-center text-uppercase">Información del proveedor</h5>
+            </div>
+            <div class="card-body bg-white">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-end">
+                            <button class="btn btn-warning btn-sm" title="Actualizar" (click)="reload()">
+                                <i class="mdi mdi-reload"></i>
+                            </button>
+                        </div>
+                        <div class="row mb-3"></div>
+                        <div *ngIf="!data" class="spinner-border text-warning m-1" role="status"></div>
+                        <div class="text-warning font-weight-medium" *ngIf="nodata">No hay información registrada</div>
+                        <div class="table-responsive" *ngIf="!nodata">
+                            <table class="table table-sm table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th class="bg-warning text-white text-end">Email empresa:</th>
+                                        <td>{{data?.email_empresa}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-warning text-white text-end">Nombre empresa:</th>
+                                        <td>{{data?.nombre_empresa}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-warning text-white text-end">Nit:</th>
+                                        <td>{{data?.nit}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-warning text-white text-end">Pais:</th>
+                                        <td>{{data?.pais}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-warning text-white text-end">Ciudad:</th>
+                                        <td>{{data?.ciudad}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-warning text-white text-end">Telefono:</th>
+                                        <td>{{data?.telefono}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-warning text-white text-end">Nombre representante:</th>
+                                        <td>{{data?.representantelegal?.nombre_completo}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-warning text-white text-end">Telefono representante:</th>
+                                        <td>{{data?.representantelegal?.telefono_representante}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="bg-warning text-white text-end">Email representante:</th>
+                                        <td>{{data?.representantelegal?.email_representante}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,145 @@
+<section class="section" id="registro-proveedor">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="title text-center mb-3">
+                    <div class="card border border-white">
+                        <div class="card-body">
+                            <form class="form-control">
+                                <div class="">
+                                    <ngb-alert *ngIf="globalSuccess" [dismissible]="false" type="success">{{successMessage}}</ngb-alert>
+                                    <ngb-alert *ngIf="globalError" [dismissible]="false" type="danger">{{ errorMessage}}</ngb-alert>
+                                    <ngb-alert *ngIf="globalWarning" [dismissible]="false" type="danger">{{ warningMessage}}</ngb-alert>
+                                </div>
+                                <p class="card-title-desc">A continuación llene la siguiente información
+                                    <span class="text-muted">Los datos con <span class="text-danger font-weight-medium">*</span> son obligatorios</span>
+                                </p>
+                                <div class="form-group row mb-4">
+                                    <label for="nombre_empresa" class="col-md-4 col-form-label text-end">Nombre de la empresa
+                                        <span class="red">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input id="nombre_empresa" autocomplete="off" autofocus type="text" [(ngModel)]="data.nombre_empresa.value" name="nombre_empresa"
+                                           class="form-control" placeholder="Nombre de la empresa"
+                                           [ngClass]="{'is-invalid': submitted && data.nombre_empresa.error, 'is-valid': submitted && !data.nombre_empresa.error}">
+                                        <small><strong>Campo requerido</strong></small>
+                                        <div *ngIf="submitted && data.nombre_empresa.error" class="invalid-feedback">
+                                            <div>Debe llenar esta información</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-4">
+                                    <label for="nit" class="col-md-4 col-form-label text-end">Número de identificación tributaria
+                                        <span class="red">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input id="nit" autocomplete="off" type="number" [(ngModel)]="data.nit.value" name="nit"
+                                               class="form-control" placeholder="Número de identificación tributaria"
+                                               [ngClass]="{'is-invalid': submitted && data.nit.error, 'is-valid': submitted && !data.nit.error}">
+                                        <small><strong>Campo requerido</strong></small>
+                                        <div *ngIf="submitted && data.nit.error" class="invalid-feedback">
+                                            <div>Debe llenar esta información</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-4">
+                                    <label for="pais" class="col-md-4 col-form-label text-end">País
+                                        <span class="red">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input id="pais" autocomplete="off" type="text" [(ngModel)]="data.pais.value" name="pais"
+                                               class="form-control" placeholder="País"
+                                               [ngClass]="{'is-invalid': submitted && data.pais.error, 'is-valid': submitted && !data.pais.error}">
+                                        <small><strong>Campo requerido</strong></small>
+                                        <div *ngIf="submitted && data.pais.error" class="invalid-feedback">
+                                            <div>Debe llenar esta información</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-4">
+                                    <label for="ciudad" class="col-md-4 col-form-label text-end">Ciudad
+                                        <span class="red">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input id="ciudad" autocomplete="off" type="text" [(ngModel)]="data.ciudad.value" name="ciudad"
+                                               class="form-control" placeholder="Ciudad"
+                                               [ngClass]="{'is-invalid': submitted && data.ciudad.error, 'is-valid': submitted && !data.ciudad.error}">
+                                        <small><strong>Campo requerido</strong></small>
+                                        <div *ngIf="submitted && data.ciudad.error" class="invalid-feedback">
+                                            <div>Debe llenar esta información</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-4">
+                                    <label for="telefono" class="col-md-4 col-form-label text-end">Teléfono
+                                        <span class="red">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input id="telefono" autocomplete="off" type="text" [(ngModel)]="data.telefono.value" name="telefono"
+                                               class="form-control" placeholder="Teléfono"
+                                               [ngClass]="{'is-invalid': submitted && data.telefono.error, 'is-valid': submitted && !data.telefono.error}">
+                                        <small><strong>Campo requerido</strong></small>
+                                        <div *ngIf="submitted && data.telefono.error" class="invalid-feedback">
+                                            <div>Debe llenar esta información</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-4">
+                                    <label for="nombre_completo" class="col-md-4 col-form-label text-end">Nombre del representante
+                                        <span class="red">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input id="nombre_completo" autocomplete="off" type="text" [(ngModel)]="data.nombre_completo.value" name="nombre_completo"
+                                               class="form-control" placeholder="Nombre del representante"
+                                               [ngClass]="{'is-invalid': submitted && data.nombre_completo.error, 'is-valid': submitted && !data.nombre_completo.error}">
+                                        <small><strong>Campo requerido</strong></small>
+                                        <div *ngIf="submitted && data.nombre_completo.error" class="invalid-feedback">
+                                            <div>Debe llenar esta información</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-4">
+                                    <label for="telefono_representante" class="col-md-4 col-form-label text-end">Teléfono representante
+                                        <span class="red">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input id="telefono_representante" autocomplete="off" type="text" [(ngModel)]="data.telefono_representante.value" name="telefono_representante"
+                                               class="form-control" placeholder="Teléfono representante"
+                                               [ngClass]="{'is-invalid': submitted && data.telefono_representante.error, 'is-valid': submitted && !data.telefono_representante.error}">
+                                        <small><strong>Campo requerido</strong></small>
+                                        <div *ngIf="submitted && data.telefono_representante.error" class="invalid-feedback">
+                                            <div>Debe llenar esta información</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-4">
+                                    <label for="email_representante" class="col-md-4 col-form-label text-end">Correo del representante
+                                        <span class="red">*</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input id="email_representante" autocomplete="off" type="text" [(ngModel)]="data.email_representante.value" name="email_representante"
+                                               class="form-control" placeholder="Correo del representante"
+                                               [ngClass]="{'is-invalid': submitted && data.email_representante.error, 'is-valid': submitted && !data.email_representante.error}">
+                                        <small><strong>Campo requerido</strong></small>
+                                        <div *ngIf="submitted && data.email_representante.error" class="invalid-feedback">
+                                            <div>Debe llenar esta información</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3"></div>
+                                <button *ngIf="!loading" class="btn btn-sm btn-success btn-rounded shadow shadow-sm" (click)="onSubmit()">
+                                    <i class="mdi mdi-check-all"></i> Guardar y continuar
+                                </button>
+                                <div *ngIf="loading" class="spinner-border text-primary m-1" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

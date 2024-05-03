@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark" (window:scroll)="windowScroll()"
+     id="navbar">
+    <div class="container">
+        <a class="navbar-brand logo" href="javascript:void(0);">
+            <img src="assets/images/logo-dark.png" alt="" class="" height="70">
+        </a>
+        <button class="navbar-toggler p-0" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
+                (click)="toggleMenu()">
+            <i class="mdi mdi-menu"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto navbar-center" id="mySidenav">
+            </ul>
+        </div>
+    </div>
+</nav>
+<div appScrollspy [spiedTags]="['SECTION']" (sectionChange)="onSectionChange($event)">
+    <div class="row mb-5"></div>
+    <app-services></app-services>
+    <app-about></app-about>
+    <app-footer></app-footer>
+</div>
